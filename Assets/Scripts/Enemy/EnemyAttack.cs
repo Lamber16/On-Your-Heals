@@ -6,11 +6,11 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] int damage = 40;
 
-    PlayerHealth target;
+    AllyHealth target;
 
     void Start()
     {
-        target = FindObjectOfType<PlayerHealth>();
+        target = FindObjectOfType<AllyHealth>();
     }
 
     public void AttackHitEvent()
@@ -20,7 +20,7 @@ public class EnemyAttack : MonoBehaviour
             return;
         }
 
-        FindObjectOfType<DisplayDamage>().TakeDamage();
+        //FindObjectOfType<DisplayDamage>().TakeDamage();
         target.TakeDamage(damage);
     }
 }

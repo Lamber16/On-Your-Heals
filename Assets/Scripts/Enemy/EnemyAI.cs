@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         health = GetComponent<EnemyHealth>();
-        target = FindObjectOfType<PlayerHealth>().GetComponent<Transform>();
+        target = FindObjectOfType<AllyHealth>().GetComponent<Transform>();
     }
 
     void Update()

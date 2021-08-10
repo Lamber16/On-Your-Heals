@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] ManaType manaType;
     [SerializeField] TextMeshProUGUI manaUI;
     [SerializeField] float range = 100f;
-    [SerializeField] int damage = 10;
+    [SerializeField] int healingValue = 10;
     [SerializeField] float hitVFXDestroyDelay = 1f;
     [SerializeField] float shootCooldown = 0f;
 
@@ -62,13 +62,13 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fPCamera.transform.position, fPCamera.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
-            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+            AllyHealth target = hit.transform.GetComponent<AllyHealth>();
 
             if (target != null)
             {
+                Debug.Log(hit.transform.name);
                 CreateHitImpact(hit);
-                target.TakeDamage(damage);
+                target.HealDamage(healingValue);
             }
         }
     }
