@@ -6,21 +6,17 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] int damage = 40;
 
-    AllyHealth target;
-
-    void Start()
-    {
-        target = FindObjectOfType<AllyHealth>();
-    }
+    Transform target;
 
     public void AttackHitEvent()
     {
+        target = GetComponent<EnemyAI>().Target;
+
         if(target == null)
         {
             return;
         }
 
-        //FindObjectOfType<DisplayDamage>().TakeDamage();
-        target.TakeDamage(damage);
+        target.BroadcastMessage("TakeDamage", damage);
     }
 }
