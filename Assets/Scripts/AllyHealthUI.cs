@@ -5,21 +5,20 @@ using TMPro;
 
 public class AllyHealthUI : MonoBehaviour
 {
-    AllyHealth[] allies;
+    [SerializeField] CharacterHealth[] allies;
     TextMeshProUGUI healthUI;
 
     void Start()
     {
-       allies = FindObjectsOfType<AllyHealth>();
        healthUI = GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
     {
         healthUI.text = "";
-        foreach (AllyHealth ally in allies)
+        foreach (CharacterHealth ally in allies)
         {
-            healthUI.text += ally.gameObject.name + ": " + ally.CurrHitPoints +"    ";
+            healthUI.text += ally.gameObject.name + ": " + ally.HitPoints +"    ";
         }
     }
 }

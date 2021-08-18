@@ -62,9 +62,9 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fPCamera.transform.position, fPCamera.transform.forward, out hit, range))
         {
-            AllyHealth target = hit.transform.GetComponent<AllyHealth>();
+            CharacterHealth target = hit.transform.GetComponent<CharacterHealth>();
 
-            if (target != null)
+            if (target != null && target.tag=="Ally")
             {
                 Debug.Log(hit.transform.name);
                 CreateHitImpact(hit);
